@@ -1,0 +1,2 @@
+class ProjectResourcesController < ApplicationController
+end
