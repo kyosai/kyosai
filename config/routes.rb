@@ -1,5 +1,6 @@
 Docoll::Application.routes.draw do
-  resources :project_resource_roles
+
+  resources :project_role_resources
 
 
   resources :project_resources
@@ -11,11 +12,13 @@ Docoll::Application.routes.draw do
   resources :project_members
 
 
-  resources :users
-
-
   resources :projects
 
+
+  resources :organizations
+
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
