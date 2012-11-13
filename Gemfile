@@ -18,6 +18,8 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'mocha' , :require => false
