@@ -1,2 +1,0 @@
-class ProjectRoleResourcesController < ApplicationController
-end
