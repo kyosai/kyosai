@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :project_role do
-    project_id 1
+    association(:project)
     name "MyString"
   end
 end

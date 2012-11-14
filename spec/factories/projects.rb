@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :project do
     name "MyString"
-    organization_id 1
+    association(:organization)
     initiator_id 1
   end
 end

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :organization do
-    name "MyString"
+    sequence(:name){|n| "Org #{n}"} 
     initiator_id 1
   end
 end

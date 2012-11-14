@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    email "MyString"
-    organization_id 1
+    sequence(:name){|n| "user #{n}"}
+    sequence(:email){|n| "user#{n}@mail.com"}
+    association(:organization)
   end
 end

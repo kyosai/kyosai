@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :project_resource_role do
-    project_resource_id 1
+    association(:project_resource)
     able_to_read false
     able_to_edit false
     able_to_create false
