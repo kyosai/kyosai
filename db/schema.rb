@@ -11,13 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114051325) do
+ActiveRecord::Schema.define(:version => 20121114052223) do
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.integer  "initiator_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "project_resource_roles", :force => true do |t|
+    t.integer  "project_resource_id"
+    t.boolean  "able_to_read"
+    t.boolean  "able_to_edit"
+    t.boolean  "able_to_create"
+    t.boolean  "able_to_delete"
+    t.boolean  "able_to_manage"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "project_resource_roles_project_roles", :id => false, :force => true do |t|
+    t.integer "project_resource_role_id"
+    t.integer "project_role_id"
+  end
+
+  add_index "project_resource_roles_project_roles", ["project_resource_role_id", "project_role_id"], :name => "project_resource_roles_project_roles_index", :unique => true
+
+  create_table "project_resources", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "project_roles", :force => true do |t|
