@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114052223) do
+ActiveRecord::Schema.define(:version => 20121114225813) do
+
+  create_table "organization_roles", :force => true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
@@ -74,12 +81,50 @@ ActiveRecord::Schema.define(:version => 20121114052223) do
 
   add_index "projects_users", ["project_id", "user_id"], :name => "projects_users_index", :unique => true
 
+  create_table "res_apps", :force => true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.boolean  "third_party"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "res_calendars", :force => true do |t|
+    t.integer  "project_id"
+    t.datetime "time_at"
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "res_comments", :force => true do |t|
+    t.integer  "res_id"
+    t.string   "res_identifier"
+    t.text     "message"
+    t.integer  "reply_to"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "res_todo_lists", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "due_time"
+    t.string   "title"
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "organization_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "organization_role_id"
   end
 
 end

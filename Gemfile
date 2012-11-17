@@ -18,6 +18,7 @@ end
 gem 'jquery-rails'
 gem 'habtm_generator', :group => :development
 group :test, :development do
+  gem 'autotest-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'sqlite3'
