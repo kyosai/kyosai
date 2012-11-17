@@ -1,25 +1,15 @@
 Docoll::Application.routes.draw do
+  
+  get "page/home"
 
-  resources :project_role_resources
+  get "page/about"
 
+  get "page/contact"
 
-  resources :project_resources
-
-
-  resources :project_roles
-
-
-  resources :project_members
-
-
-  resources :projects
-
-
-  resources :organizations
-
-
-  resources :users
-
+  # devise_for :users
+  devise_for :users, :path => "usuarios", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
+  # devise_for :users
+  root :to => 'page#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -52,11 +52,22 @@ module Docoll
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
-
+    
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
-
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :user_name            => 'zidmubarock@gmail.com',
+      :password             => 'alzid4evergoogle',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }
+   # config.action_mailer.logger = 'log/mailer.log' 
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.generators do |g|
