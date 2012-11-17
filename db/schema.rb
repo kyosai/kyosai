@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114225813) do
+ActiveRecord::Schema.define(:version => 20121117172036) do
 
   create_table "organization_roles", :force => true do |t|
     t.string   "name"
@@ -104,8 +104,49 @@ ActiveRecord::Schema.define(:version => 20121114225813) do
     t.text     "message"
     t.integer  "reply_to"
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "resourceable_type"
+    t.integer  "resourceable_id"
+  end
+
+  create_table "res_gits", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "url"
+    t.text     "description"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "res_histories", :force => true do |t|
+    t.integer  "resourceable_id"
+    t.string   "resourceable_type"
+    t.integer  "user_id"
+    t.string   "action"
+    t.string   "description"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "res_milestones", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "creator_id"
+    t.string   "name"
+    t.datetime "due_time"
+    t.text     "description"
+    t.boolean  "complete"
+    t.datetime "complete_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "res_pages", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "res_todo_lists", :force => true do |t|
